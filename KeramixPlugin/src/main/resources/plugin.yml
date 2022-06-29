@@ -1,0 +1,4 @@
+main: com.github.lory24.keramix.plugin.Entry
+name: Keramix
+version: ${parent.version}
+author: LoRy24
