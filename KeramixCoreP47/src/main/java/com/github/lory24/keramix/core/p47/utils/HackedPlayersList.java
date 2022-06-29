@@ -50,7 +50,7 @@ public class HackedPlayersList implements Listener {
      * Unregister a player from the map
      */
     public void unregisterPlayer(@NotNull Player player) {
-        this.hackedPlayersMap.get(player).getHackedPlayerData().stopUpdateLoop(); // Stop the update loop task
+        this.hackedPlayersMap.get(player).getBukkitTask().cancel(); // Stop the update loop task
         this.hackedPlayersMap.remove(player);
     }
 
