@@ -28,7 +28,7 @@ public class HackedPlayer {
     private final HackedPlayerData hackedPlayerData;
 
     /**
-     * The player checker. This is the main core of the anticheat
+     * The player checker. This is the main core of the anti cheat
      */
     @Getter
     private final PlayerChecker playerChecker;
@@ -45,6 +45,9 @@ public class HackedPlayer {
         this.startPrimaryLoop();
     }
 
+    /**
+     * Start the AntiCheat primary loop. It will first update the player's data, then it will do all the checks.
+     */
     private void startPrimaryLoop() {
         // Start the async loop
         this.bukkitTask = Bukkit.getScheduler().runTaskTimerAsynchronously(KeramixAntiCheat.INSTANCE.getJavaPlugin(), () -> {
