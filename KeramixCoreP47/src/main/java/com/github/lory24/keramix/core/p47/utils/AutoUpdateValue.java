@@ -23,7 +23,7 @@ public class AutoUpdateValue<T> {
     private final UpdateValue<T> updateValueFunctionalInterface;
 
     /**
-     * The constructor will istance the updateValue functional interface, used to update the value of this auto-update
+     * The constructor will instance the updateValue functional interface, used to update the value of this auto-update
      * class.
      */
     public AutoUpdateValue(UpdateValue<T> updateValueFunctionalInterface) {
