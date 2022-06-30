@@ -4,6 +4,7 @@ import com.github.lory24.keramix.core.p47.utils.HackedPlayersList;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
+@SuppressWarnings("SpellCheckingInspection")
 public enum KeramixAntiCheat {
 
     /**
