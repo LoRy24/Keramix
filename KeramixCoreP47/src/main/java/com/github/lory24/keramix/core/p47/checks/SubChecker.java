@@ -1,6 +1,7 @@
 package com.github.lory24.keramix.core.p47.checks;
 
 import com.github.lory24.keramix.core.p47.utils.KeramixNotificationsUtils;
+import lombok.Getter;
 
 import java.util.HashMap;
 
@@ -12,10 +13,23 @@ public abstract class SubChecker {
     protected final HashMap<Check, Integer> registeredChecks = new HashMap<>();
 
     /**
+     * Reference to the main player's checker
+     */
+    @Getter
+    private final PlayerChecker playerChecker;
+
+    /**
+     * Inject the playerChecker
+     */
+    protected SubChecker(PlayerChecker playerChecker) {
+        this.playerChecker = playerChecker;
+    }
+
+    /**
      * Every checker should have this method in order to run all the checks
      */
     public void doAllChecks() {
-        this.registeredChecks.forEach((check, times) -> ((AbstractCheck) check).check());
+        this.registeredChecks.forEach((check, times) -> ((AbstractCheck) check).check(this.playerChecker.getHackedPlayer()));
     }
 
     /**
