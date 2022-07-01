@@ -4,9 +4,6 @@ import com.github.lory24.keramix.core.p47.checks.AbstractCheck;
 import com.github.lory24.keramix.core.p47.checks.ChecksIdentifiers;
 import com.github.lory24.keramix.core.p47.checks.SubChecker;
 import com.github.lory24.keramix.core.p47.utils.HackedPlayer;
-import net.minecraft.server.v1_8_R3.EntityPlayer;
-import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.jetbrains.annotations.NotNull;
 
 public class NoFallA extends AbstractCheck {
