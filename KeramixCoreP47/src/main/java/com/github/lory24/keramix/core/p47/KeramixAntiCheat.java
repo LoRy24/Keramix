@@ -3,6 +3,7 @@ package com.github.lory24.keramix.core.p47;
 import com.github.lory24.keramix.core.p47.utils.HackedPlayersList;
 import lombok.Getter;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -55,6 +56,7 @@ public enum KeramixAntiCheat {
             customConfigFile.createNewFile();
             Files.copy(this.javaPlugin.getResource("config_1.8.yml"), Path.of(customConfigFile.getAbsolutePath()), new StandardCopyOption[]{StandardCopyOption.REPLACE_EXISTING});
         }
+        this.customConfig = YamlConfiguration.loadConfiguration(customConfigFile);
 
         // Core features
         this.hackedPlayersList = new HackedPlayersList(this.javaPlugin);
