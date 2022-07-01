@@ -1,6 +1,8 @@
 package com.github.lory24.keramix.core.p47.checks;
 
+import com.github.lory24.keramix.core.p47.utils.HackedPlayer;
 import lombok.Getter;
+import org.bukkit.entity.Player;
 
 public abstract class AbstractCheck implements Check {
 
@@ -31,7 +33,7 @@ public abstract class AbstractCheck implements Check {
     /**
      * Process the check's actions
      */
-    public abstract void check();
+    public abstract void check(final HackedPlayer player);
 
     /**
      * Implemented method used to fail a check
