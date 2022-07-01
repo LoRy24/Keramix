@@ -2,7 +2,16 @@ package com.github.lory24.keramix.core.p47;
 
 import com.github.lory24.keramix.core.p47.utils.HackedPlayersList;
 import lombok.Getter;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import javax.swing.text.DefaultEditorKit;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 
 @SuppressWarnings("SpellCheckingInspection")
 public enum KeramixAntiCheat {
@@ -26,14 +35,28 @@ public enum KeramixAntiCheat {
     @Getter
     private HackedPlayersList hackedPlayersList;
 
+    /**
+     * The custom protocol config
+     */
+    @Getter
+    private FileConfiguration customConfig;
+
     // endregion
 
     /**
      * Enable the Keramix AntiCheat core.
      */
-    public void enable(JavaPlugin javaPlugin) {
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    public void enable(JavaPlugin javaPlugin) throws IOException {
         this.javaPlugin = javaPlugin; // Inject the JavaPlugin
-        this.javaPlugin.saveDefaultConfig();
+
+        // Load the custom config
+        File dataFolder = this.javaPlugin.getDataFolder(), customConfigFile = new File(dataFolder, "config_1.8.yml");
+        if (!dataFolder.exists()) dataFolder.mkdir();
+        if (!customConfigFile.exists()) {
+            customConfigFile.createNewFile();
+            Files.copy(this.javaPlugin.getResource("config_1.8.yml"), Path.of(customConfigFile.getAbsolutePath()), new StandardCopyOption[]{StandardCopyOption.REPLACE_EXISTING});
+        }
 
         // Core features
         this.hackedPlayersList = new HackedPlayersList(this.javaPlugin);

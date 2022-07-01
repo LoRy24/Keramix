@@ -16,9 +16,9 @@
 settings:
 
   #
-  # The messages settings. Remember that if you write "${text}" with "text" replaced with a key  in the config, it will
-  # be replaced with its value. You can use this syntax also to put some special values written in the comments over
-  # the key.
+  # The messages settings. Remember that if you write "${text}" with "text" replaced with a key (section_key) in the config,
+  # it will be replaced with its value. You can use this syntax also to put some special values written in the comments
+  # over the key.
   #
   messages:
 
@@ -31,4 +31,6 @@ settings:
     # This message will be sent when a player flags a cheat.
     # The custom parameters are: ${flag-text}, ${flag-times} & ${player}
     #
-    flagMessage: "${prefix} &d${player} &8has failed ${flag-name} &8[&d${flag-times}&8]"
+    # Permission to see this message: keramix.flag.see
+    #
+    flagMessage: "${messages_prefix} &d${player} &8has failed ${flag-name} &8[&d${flag-times}&8]"
