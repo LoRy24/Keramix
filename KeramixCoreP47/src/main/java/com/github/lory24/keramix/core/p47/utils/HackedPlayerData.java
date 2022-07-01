@@ -2,9 +2,11 @@ package com.github.lory24.keramix.core.p47.utils;
 
 import lombok.Getter;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class HackedPlayerData {
 
@@ -19,6 +21,11 @@ public class HackedPlayerData {
     @Getter
     private final AutoUpdateValue<Location> playerLocation;
 
+    // Touching values
+
+    @Getter private final AutoUpdateValue<Boolean> playerTouchingClimbable;
+    @Getter private final AutoUpdateValue<Boolean> playerInLiquid;
+
     // endregion
 
     /**
@@ -30,6 +37,8 @@ public class HackedPlayerData {
 
         // Give a value to all the AutoUpdateValues
         this.playerLocation = new AutoUpdateValue<>(Entity::getLocation); // player's location
+        this.playerTouchingClimbable = new AutoUpdateValue<>(player -> List.of(Material.LADDER, Material.VINE).contains(player.getLocation().getBlock().getType())); // Get if the player is touching a climbable
+        this.playerInLiquid = new AutoUpdateValue<>(player -> List.of(Material.WATER, Material.LAVA).contains(player.getLocation().getBlock().getType())); // Get if the player is in liquid
     }
 
     /**
