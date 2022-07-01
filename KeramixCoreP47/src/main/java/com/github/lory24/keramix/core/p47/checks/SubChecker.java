@@ -22,7 +22,7 @@ public abstract class SubChecker {
      * Register a new check
      */
     public void registerCheck(Check check) {
-        this.registeredChecks.put(check, 0); // Register the check with start value '0'
+        this.registeredChecks.put(check, 1); // Register the check with start value '0'
     }
 
     /**
