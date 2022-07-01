@@ -43,13 +43,14 @@ public class HackedPlayersList implements Listener {
      * Register a player into the hackedPlayersMap
      */
     public void registerPlayer(@NotNull Player player) {
-        hackedPlayersMap.put(player, new HackedPlayer(player));
+        if  (!player.hasPermission("keramix.bypass")) hackedPlayersMap.put(player, new HackedPlayer(player));
     }
 
     /**
      * Unregister a player from the map
      */
     public void unregisterPlayer(@NotNull Player player) {
+        if (!this.hackedPlayersMap.containsKey(player)) return;
         this.hackedPlayersMap.get(player).getBukkitTask().cancel(); // Stop the update loop task
         this.hackedPlayersMap.remove(player);
     }
