@@ -1,5 +1,6 @@
 package com.github.lory24.keramix.core.p47.checks.movement;
 
+import com.github.lory24.keramix.core.p47.ConfigValues;
 import com.github.lory24.keramix.core.p47.checks.PlayerChecker;
 import com.github.lory24.keramix.core.p47.checks.SubChecker;
 import com.github.lory24.keramix.core.p47.checks.movement.fly.FlyA;
@@ -14,7 +15,7 @@ public class MovementChecker extends SubChecker {
         super(playerChecker);
 
         // Register the checkers
-        this.registerCheck(new FlyA(this));
+        if ((boolean) ConfigValues.flags_flyA_enabled.getFromConfig()) this.registerCheck(new FlyA(this));
         this.registerCheck(new NoFallA(this));
     }
 }

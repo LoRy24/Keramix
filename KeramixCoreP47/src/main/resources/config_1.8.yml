@@ -16,6 +16,12 @@
 settings:
 
   #
+  # The command that will be executed when someone clicks on a flag message. The param ${subject} represents the player
+  # that clicks on the message, and the ${target} represents the flagger.
+  #
+  teleportCommand: "/tp ${subject} ${target}"
+
+  #
   # The messages settings. Remember that if you write "${text}" with "text" replaced with a key (section_key) in the config,
   # it will be replaced with its value. You can use this syntax also to put some special values written in the comments
   # over the key.
@@ -32,5 +38,32 @@ settings:
     # The custom parameters are: ${flag-text}, ${flag-times} & ${player}
     #
     # Permission to see this message: keramix.flag.see
+    # Permission to bypass: keramix.bypass
     #
     flagMessage: "${messages_prefix} &d${player} &8has failed &d${flag-name} &8[&d${flag-times}&8]"
+
+  #
+  # All the flags options.
+  #
+  flags:
+
+    #
+    # FlyA Check. This flag checks if the player seems to be grounded when he's not. For example, some types of
+    # "noFall" uses this method.
+    #
+    flyA:
+
+      #
+      # Enable this flag
+      #
+      enabled: true
+
+      #
+      # Ticks before start flagging
+      #
+      ticks: 2
+
+      #
+      # The text shown when someone put his cursor on the message
+      #
+      hover: "${messages_prefix} &8This flag is thrown when a player isn't grounded but his \n&8client says that he is. Some cheats such as &dNoFall&8 uses this method in\n&8order to work."

@@ -6,8 +6,14 @@ import org.jetbrains.annotations.NotNull;
 
 public enum ConfigValues {
 
+    teleportCommand("settings.teleportCommand"),
+
     messages_prefix("settings.messages.prefix"),
-    messages_flagMessage("settings.messages.flagMessage")
+    messages_flagMessage("settings.messages.flagMessage"),
+
+    flags_flyA_enabled("settings.flags.flyA.enabled"),
+    flags_flyA_ticks("settings.flags.flyA.ticks"),
+    flags_flyA_hover("settings.flags.flyA.hover"),
     ;
 
     /**
@@ -36,7 +42,7 @@ public enum ConfigValues {
     @NotNull
     public String getParsedStringFromConfig() {
         String resultString = (String) this.getFromConfig();
-        for (ConfigValues value: ConfigValues.values()) resultString = resultString.replace("${" + value.name() + "}", (String) value.getFromConfig());
+        for (ConfigValues value: ConfigValues.values()) resultString = resultString.replace("${" + value.name() + "}", String.valueOf(value.getFromConfig()));
         return ChatColor.translateAlternateColorCodes('&', resultString);
     }
 }

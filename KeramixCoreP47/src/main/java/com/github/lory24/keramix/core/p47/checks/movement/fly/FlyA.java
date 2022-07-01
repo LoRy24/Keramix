@@ -1,5 +1,6 @@
 package com.github.lory24.keramix.core.p47.checks.movement.fly;
 
+import com.github.lory24.keramix.core.p47.ConfigValues;
 import com.github.lory24.keramix.core.p47.checks.AbstractCheck;
 import com.github.lory24.keramix.core.p47.checks.ChecksIdentifiers;
 import com.github.lory24.keramix.core.p47.checks.SubChecker;
@@ -13,6 +14,7 @@ public class FlyA extends AbstractCheck {
 
     // Used to obtain when to start flagging
     private int totalTimes = 0;
+    private final int maxTotalTimes = (int) ConfigValues.flags_flyA_ticks.getFromConfig();
 
     /**
      * Set all the most important features of the check.
@@ -38,13 +40,12 @@ public class FlyA extends AbstractCheck {
         // Get the entity player
         final EntityPlayer entityPlayer = ((CraftPlayer) player.getPlayer()).getHandle();
 
-        // asus
+        // If the bla bla bla don't want to write the description
         final boolean clientOnGround = entityPlayer.onGround;
         final boolean serverOnGround = to.getY() % 0.015625 == 0.0 && from.getY() % 0.015625 == 0.0;
 
         if (clientOnGround != serverOnGround) {
-            if (++this.totalTimes > 4)
-                this.fail();
+            if (++this.totalTimes > maxTotalTimes) this.fail();
         } else totalTimes = 0;
     }
 }
