@@ -54,6 +54,6 @@ public class HackedPlayer {
             // Update the data & do all the checks
             this.hackedPlayerData.updateAllData();
             this.playerChecker.doChecks();
-        }, 0, 20L);
+        }, 0, 1L);
     }
 }
