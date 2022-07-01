@@ -5,6 +5,8 @@ import lombok.Getter;
 public enum ChecksIdentifiers {
 
     MOVEMENT_FLY_TYPE_A("Fly-A"),
+
+    MOVEMENT_NOFALL_TYPE_A("NoFall-A"),
     ;
 
     /**
