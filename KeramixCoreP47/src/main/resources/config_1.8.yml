@@ -33,4 +33,4 @@ settings:
     #
     # Permission to see this message: keramix.flag.see
     #
-    flagMessage: "${messages_prefix} &d${player} &8has failed ${flag-name} &8[&d${flag-times}&8]"
+    flagMessage: "${messages_prefix} &d${player} &8has failed &d${flag-name} &8[&d${flag-times}&8]"
